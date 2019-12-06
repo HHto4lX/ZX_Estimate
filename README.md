@@ -12,3 +12,5 @@ make run_makeZX
 ```
 
 The ZX.root file will be created
+
+Remember to do cmsenv from a proper release before compiling
