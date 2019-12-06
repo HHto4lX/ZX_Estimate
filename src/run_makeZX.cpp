@@ -29,7 +29,7 @@ int main ( int argc, char *argv[] )
   // _fs_ROS_SS.push_back(1.04);//2e2mu
   // _fs_ROS_SS.push_back(1.00);//2mu2e
   
-  FakeRates *FR = new FakeRates( "/afs/cern.ch/work/l/lborgono/private/HZZ4l-plotter/FakeRate_SS_Moriond368.root");
+  FakeRates *FR = new FakeRates( "data/FakeRate_SS_Moriond368.root");
   //FakeRates *FR = new FakeRates( "/afs/cern.ch/work/l/lborgono/private/HZZ4l-plotter/FakeRates_SS_Moriond19_2018.root");
   TChain *t = new TChain("CRZLLTree/candTree");
   t->Add("/eos/user/a/acappati/samples_4lX/allsamples/AllData/ZZXAnalysis.root");
