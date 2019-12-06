@@ -1,8 +1,8 @@
 # ZX_Estimate
 
-git clone https://github.com/HHto4lX/ZX_Estimate.git
 
 ```
+git clone https://github.com/HHto4lX/ZX_Estimate.git
 cd ZX_Estimate/ext/
 sh compile_ext.sh
 cd ..
