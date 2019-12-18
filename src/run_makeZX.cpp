@@ -73,6 +73,7 @@ int main ( int argc, char *argv[] )
   data.fChain->SetBranchStatus("JetIsBtaggedWithSF", 1);
   data.fChain->SetBranchStatus("JetIsBtagged", 1);
   data.fChain->SetBranchStatus("JetBTagger", 1);
+  data.fChain->SetBranchStatus("PFMET", 1);
   
   float dbkg_kin;
   float dbkg;
@@ -104,6 +105,7 @@ int main ( int argc, char *argv[] )
   vector<Float_t> *JetIsBtaggedWithSF = 0;
   vector<Float_t> *JetIsBtagged = 0;
   vector<Float_t> *JetBTagger = 0;
+  Float_t PFMET;
   
   TFile *f = new TFile("ZX.root","recreate");
   TTree *tnew = new TTree("candTree","");
@@ -138,6 +140,7 @@ int main ( int argc, char *argv[] )
   tnew->Branch("JetIsBtaggedWithSF",&JetIsBtaggedWithSF);
   tnew->Branch("JetIsBtagged",&JetIsBtagged);
   tnew->Branch("JetBTagger",&JetBTagger);
+  tnew->Branch("PFMET",&PFMET);
 
   
   for(Long64_t jentry=0; jentry<nentries;jentry++)
@@ -169,6 +172,7 @@ int main ( int argc, char *argv[] )
       ZZPt = data.ZZPt;
       ZZEta = data.ZZEta;
       ZZPhi = data.ZZPhi;
+      PFMET = data.PFMET;
 
       LepEta->clear();
       LepPt->clear();
