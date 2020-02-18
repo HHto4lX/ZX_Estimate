@@ -19,18 +19,27 @@ int main ( int argc, char *argv[] )
 {
   
   vector<float> _fs_ROS_SS;
-  _fs_ROS_SS.push_back(1.22);//4mu 
-  _fs_ROS_SS.push_back(0.97);//4e 
-  _fs_ROS_SS.push_back(1.30);//2e2mu 
-  _fs_ROS_SS.push_back(0.98);//2mu2e 
+  // 2018 OS/SS ratio, corresponds to FR_fromHZZmuCutBased/FakeRates_SS_2018.root
+  _fs_ROS_SS.push_back(1.02926);//4mu 
+  _fs_ROS_SS.push_back(1.00568);//4e 
+  _fs_ROS_SS.push_back(1.03226);//2e2mu 
+  _fs_ROS_SS.push_back(1.00432);//2mu2e 
+
+  // OS/SS ratio for Moriond17 FR
+  // _fs_ROS_SS.push_back(1.22);//4mu 
+  // _fs_ROS_SS.push_back(0.97);//4e 
+  // _fs_ROS_SS.push_back(1.30);//2e2mu 
+  // _fs_ROS_SS.push_back(0.98);//2mu2e 
 
   // _fs_ROS_SS.push_back(1.04);//4mu
   // _fs_ROS_SS.push_back(1.01);//4e
   // _fs_ROS_SS.push_back(1.04);//2e2mu
   // _fs_ROS_SS.push_back(1.00);//2mu2e
   
-  FakeRates *FR = new FakeRates( "data/FakeRate_SS_Moriond368.root");
-  //FakeRates *FR = new FakeRates( "/afs/cern.ch/work/l/lborgono/private/HZZ4l-plotter/FakeRates_SS_Moriond19_2018.root");
+
+  // 2018 FR with cut based muon ID
+  FakeRates *FR = new FakeRates( "data/FR_fromHZZmuCutBased/FakeRates_SS_2018.root");
+
   TChain *t = new TChain("CRZLLTree/candTree");
   t->Add("/eos/user/a/acappati/samples_4lX/allsamples/AllData/ZZXAnalysis.root");
   candTree data(t);
