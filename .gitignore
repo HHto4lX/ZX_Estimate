@@ -6,20 +6,6 @@
 *.d
 *.pcm
 
-# Plots
-*.root
-*.pdf
-*.png
-*.jpeg
-*.eps
-
-# Text files
-*.txt
-*.yaml
-
-# Directories
-Fits/
-Plots/
 
 
 run_plotter
