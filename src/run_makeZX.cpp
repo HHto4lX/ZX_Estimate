@@ -41,7 +41,7 @@ int main ( int argc, char *argv[] )
   FakeRates *FR = new FakeRates( "data/FR_fromHZZmuCutBased/FakeRates_SS_2018.root");
 
   TChain *t = new TChain("CRZLLTree/candTree");
-  t->Add("/eos/user/a/acappati/samples_4lX/allsamples/AllData/ZZXAnalysis.root");
+  t->Add("/eos/user/a/acappati/samples_HH4lbb/samples_2018/AllData/ZZXAnalysis.root");
   candTree data(t);
   Long64_t nentries = data.fChain->GetEntries();
   std::cout << "Number of entries: " << nentries << endl;
