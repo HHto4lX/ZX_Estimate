@@ -32,26 +32,40 @@
 
 using namespace std;
 
+//***************************
+//TString year = "2016";
+//TString year = "2017";
+TString year = "2018";
 
-
-int year = 2018;
-
+string method = "SS";
+//string method = "OS";
+//***************************
 
 
 void plotFR(){
 
-  TFile* inFile;
+  TString inFile_name = "../data/FR_fromHZZmuCutBased/FakeRates_" + method + "_" + year + ".root";
+  cout<<"opening file"<<inFile_name<<" ..."<<endl;
+  TFile* inFile = TFile::Open(inFile_name);
 
-  if      (year==2016) inFile = TFile::Open("../data/FR_fromHZZmuCutBased/FakeRates_SS_2016.root");
-  else if (year==2017) inFile = TFile::Open("../data/FR_fromHZZmuCutBased/FakeRates_SS_2017.root");
-  else if (year==2018) inFile = TFile::Open("../data/FR_fromHZZmuCutBased/FakeRates_SS_2018.root");
-  else cout<<"missing input file for the year selected!"<<endl;
-  
-  
-  TGraph* fr_ele_EB  = (TGraph*)inFile->Get("FR_SS_electron_EB");
-  TGraph* fr_ele_EE  = (TGraph*)inFile->Get("FR_SS_electron_EE");
-  TGraph* fr_muon_EB = (TGraph*)inFile->Get("FR_SS_muon_EB");
-  TGraph* fr_muon_EE = (TGraph*)inFile->Get("FR_SS_muon_EE");
+  TGraph* fr_ele_EB;
+  TGraph* fr_ele_EE;
+  TGraph* fr_muon_EB;
+  TGraph* fr_muon_EE;
+
+  if(method=="OS"){
+    fr_ele_EB  = (TGraph*)inFile->Get("FR_OS_electron_EB");  
+    fr_ele_EE  = (TGraph*)inFile->Get("FR_OS_electron_EE");
+    fr_muon_EB = (TGraph*)inFile->Get("FR_OS_muon_EB");
+    fr_muon_EE = (TGraph*)inFile->Get("FR_OS_muon_EE");
+  }
+
+  if(method=="SS"){
+    fr_ele_EB  = (TGraph*)inFile->Get("FR_SS_electron_EB");
+    fr_ele_EE  = (TGraph*)inFile->Get("FR_SS_electron_EE");
+    fr_muon_EB = (TGraph*)inFile->Get("FR_SS_muon_EB");
+    fr_muon_EE = (TGraph*)inFile->Get("FR_SS_muon_EE");
+  }
 
 
   TCanvas* c_ele_EB = new TCanvas("c_ele_EB","c_ele_EB",600,600);
@@ -71,9 +85,8 @@ void plotFR(){
   l_ele_EB->SetFillColor(kWhite);
   l_ele_EB->SetLineColor(kWhite);
   l_ele_EB->Draw();
-  if      (year==2016) c_ele_EB->SaveAs("FR_2016_electron_barrel.png");
-  else if (year==2017) c_ele_EB->SaveAs("FR_2017_electron_barrel.png");
-  else if (year==2018) c_ele_EB->SaveAs("FR_2018_electron_barrel.png");
+  TString fout_ele_barrel_name = "FR_electron_barrel_" + method + "_" + year + ".png";
+  c_ele_EB->SaveAs(fout_ele_barrel_name);
 
 
   TCanvas* c_ele_EE = new TCanvas("c_ele_EE","c_ele_EE",600,600);
@@ -93,9 +106,8 @@ void plotFR(){
   l_ele_EE->SetFillColor(kWhite);
   l_ele_EE->SetLineColor(kWhite);
   l_ele_EE->Draw();
-  if      (year==2016) c_ele_EE->SaveAs("FR_2016_electron_endcap.png");
-  else if (year==2017) c_ele_EE->SaveAs("FR_2017_electron_endcap.png");
-  else if (year==2018) c_ele_EE->SaveAs("FR_2018_electron_endcap.png");
+  TString fout_ele_endcap_name = "FR_electron_endcap_" + method + "_" + year + ".png";
+  c_ele_EE->SaveAs(fout_ele_endcap_name);
 
 
   TCanvas* c_muon_EB = new TCanvas("c_muon_EB","c_muon_EB",600,600);
@@ -115,9 +127,8 @@ void plotFR(){
   l_muon_EB->SetFillColor(kWhite);
   l_muon_EB->SetLineColor(kWhite);
   l_muon_EB->Draw();
-  if      (year==2016) c_muon_EB->SaveAs("FR_2016_muon_barrel.png");
-  else if (year==2017) c_muon_EB->SaveAs("FR_2017_muon_barrel.png");
-  else if (year==2018) c_muon_EB->SaveAs("FR_2018_muon_barrel.png");
+  TString fout_mu_barrel_name = "FR_muon_barrel_" + method + "_" + year + ".png";
+  c_muon_EB->SaveAs(fout_mu_barrel_name);
 
 
   TCanvas* c_muon_EE = new TCanvas("c_muon_EE","c_muon_EE",600,600);
@@ -137,9 +148,8 @@ void plotFR(){
   l_muon_EE->SetFillColor(kWhite);
   l_muon_EE->SetLineColor(kWhite);
   l_muon_EE->Draw();
-  if      (year==2016) c_muon_EE->SaveAs("FR_2016_muon_endcap.png");
-  else if (year==2017) c_muon_EE->SaveAs("FR_2017_muon_endcap.png");
-  else if (year==2018) c_muon_EE->SaveAs("FR_2018_muon_endcap.png");
+  TString fout_mu_endcap_name = "FR_muon_endcap_" + method + "_" + year + ".png";
+  c_muon_EE->SaveAs(fout_mu_endcap_name);
 
 
 }
