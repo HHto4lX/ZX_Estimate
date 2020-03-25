@@ -19,17 +19,17 @@ int main ( int argc, char *argv[] )
 {
   
   vector<float> _fs_ROS_SS;
-  // 2016 OS/SS ratio, corresponds to FR_fromHZZmuCutBased/FakeRates_SS_2016.root
-  _fs_ROS_SS.push_back(0.998863);//4mu 
-  _fs_ROS_SS.push_back(1.00243);//4e 
-  _fs_ROS_SS.push_back(1.03338);//2e2mu 
-  _fs_ROS_SS.push_back(0.998852);//2mu2e 
+  // // 2016 OS/SS ratio, corresponds to FR_fromHZZmuCutBased/FakeRates_SS_2016.root
+  // _fs_ROS_SS.push_back(0.998863);//4mu 
+  // _fs_ROS_SS.push_back(1.00243);//4e 
+  // _fs_ROS_SS.push_back(1.03338);//2e2mu 
+  // _fs_ROS_SS.push_back(0.998852);//2mu2e 
 
-  // // 2017 OS/SS ratio, corresponds to FR_fromHZZmuCutBased/FakeRates_SS_2017.root
-  // _fs_ROS_SS.push_back(1.03949);//4mu 
-  // _fs_ROS_SS.push_back(1.01198);//4e 
-  // _fs_ROS_SS.push_back(1.01328);//2e2mu 
-  // _fs_ROS_SS.push_back(1.00257);//2mu2e 
+  // 2017 OS/SS ratio, corresponds to FR_fromHZZmuCutBased/FakeRates_SS_2017.root
+  _fs_ROS_SS.push_back(1.03949);//4mu 
+  _fs_ROS_SS.push_back(1.01198);//4e 
+  _fs_ROS_SS.push_back(1.01328);//2e2mu 
+  _fs_ROS_SS.push_back(1.00257);//2mu2e 
 
   // // 2018 OS/SS ratio, corresponds to FR_fromHZZmuCutBased/FakeRates_SS_2018.root
   // _fs_ROS_SS.push_back(1.02926);//4mu 
@@ -39,18 +39,18 @@ int main ( int argc, char *argv[] )
 
   
   // 2016 FR with cut based muon ID
-  FakeRates *FR = new FakeRates( "data/FR_fromHZZmuCutBased/FakeRates_SS_2016.root");
+  //  FakeRates *FR = new FakeRates( "data/FR_fromHZZmuCutBased/FakeRates_SS_2016.root");
 
   // 2017 FR with cut based muon ID
-  //  FakeRates *FR = new FakeRates( "data/FR_fromHZZmuCutBased/FakeRates_SS_2017.root");
+  FakeRates *FR = new FakeRates( "data/FR_fromHZZmuCutBased/FakeRates_SS_2017.root");
 
   // 2018 FR with cut based muon ID
   //  FakeRates *FR = new FakeRates( "data/FR_fromHZZmuCutBased/FakeRates_SS_2018.root");
 
 
   TChain *t = new TChain("CRZLLTree/candTree");
-  t->Add("/eos/user/a/acappati/samples_HH4lbb/samples_2016/AllData/ZZXAnalysis.root"); //2016
-  //  t->Add("/eos/user/a/acappati/samples_HH4lbb/samples_2017/AllData/ZZXAnalysis.root"); //2017
+  //  t->Add("/eos/user/a/acappati/samples_HH4lbb/samples_2016/AllData/ZZXAnalysis.root"); //2016
+  t->Add("/eos/user/a/acappati/samples_HH4lbb/samples_2017/AllData/ZZXAnalysis.root"); //2017
   //  t->Add("/eos/user/a/acappati/samples_HH4lbb/samples_2018/AllData/ZZXAnalysis.root"); //2018
   candTree data(t);
   Long64_t nentries = data.fChain->GetEntries();
