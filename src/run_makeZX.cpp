@@ -25,33 +25,33 @@ int main ( int argc, char *argv[] )
   // _fs_ROS_SS.push_back(1.03338);//2e2mu 
   // _fs_ROS_SS.push_back(0.998852);//2mu2e 
 
-  // 2017 OS/SS ratio, corresponds to FR_fromHZZmuCutBased/FakeRates_SS_2017.root
-  _fs_ROS_SS.push_back(1.03949);//4mu 
-  _fs_ROS_SS.push_back(1.01198);//4e 
-  _fs_ROS_SS.push_back(1.01328);//2e2mu 
-  _fs_ROS_SS.push_back(1.00257);//2mu2e 
+  // // 2017 OS/SS ratio, corresponds to FR_fromHZZmuCutBased/FakeRates_SS_2017.root
+  // _fs_ROS_SS.push_back(1.03949);//4mu 
+  // _fs_ROS_SS.push_back(1.01198);//4e 
+  // _fs_ROS_SS.push_back(1.01328);//2e2mu 
+  // _fs_ROS_SS.push_back(1.00257);//2mu2e 
 
-  // // 2018 OS/SS ratio, corresponds to FR_fromHZZmuCutBased/FakeRates_SS_2018.root
-  // _fs_ROS_SS.push_back(1.02926);//4mu 
-  // _fs_ROS_SS.push_back(1.00568);//4e 
-  // _fs_ROS_SS.push_back(1.03226);//2e2mu 
-  // _fs_ROS_SS.push_back(1.00432);//2mu2e 
+  // 2018 OS/SS ratio, corresponds to FR_fromHZZmuCutBased/FakeRates_SS_2018.root
+  _fs_ROS_SS.push_back(1.02926);//4mu 
+  _fs_ROS_SS.push_back(1.00568);//4e 
+  _fs_ROS_SS.push_back(1.03226);//2e2mu 
+  _fs_ROS_SS.push_back(1.00432);//2mu2e 
 
   
   // 2016 FR with cut based muon ID
-  //  FakeRates *FR = new FakeRates( "data/FR_fromHZZmuCutBased/FakeRates_SS_2016.root");
+  //  FakeRates *FR = new FakeRates( "data/FR_HH4lX_4ljjsel/FakeRates_SS_samples2016.root");
 
   // 2017 FR with cut based muon ID
-  FakeRates *FR = new FakeRates( "data/FR_fromHZZmuCutBased/FakeRates_SS_2017.root");
+  //  FakeRates *FR = new FakeRates( "data/FR_HH4lX_4ljjsel/FakeRates_SS_samples2017.root");
 
   // 2018 FR with cut based muon ID
-  //  FakeRates *FR = new FakeRates( "data/FR_fromHZZmuCutBased/FakeRates_SS_2018.root");
+  FakeRates *FR = new FakeRates( "data/FR_HH4lX_4ljjsel/FakeRates_SS_samples2018.root");
 
 
   TChain *t = new TChain("CRZLLTree/candTree");
   //  t->Add("/eos/user/a/acappati/samples_HH4lbb/samples_2016/AllData/ZZXAnalysis.root"); //2016
-  t->Add("/eos/user/a/acappati/samples_HH4lbb/samples_2017/AllData/ZZXAnalysis.root"); //2017
-  //  t->Add("/eos/user/a/acappati/samples_HH4lbb/samples_2018/AllData/ZZXAnalysis.root"); //2018
+  //  t->Add("/eos/user/a/acappati/samples_HH4lbb/samples_2017/AllData/ZZXAnalysis.root"); //2017
+  t->Add("/eos/user/a/acappati/samples_HH4lbb/samples_2018/AllData/ZZXAnalysis.root"); //2018
   candTree data(t);
   Long64_t nentries = data.fChain->GetEntries();
   std::cout << "Number of entries: " << nentries << endl;
@@ -92,6 +92,7 @@ int main ( int argc, char *argv[] )
   data.fChain->SetBranchStatus("JetIsBtaggedWithSF", 1);
   data.fChain->SetBranchStatus("JetIsBtagged", 1);
   data.fChain->SetBranchStatus("JetBTagger", 1);
+  data.fChain->SetBranchStatus("JetHadronFlavour", 1);
   data.fChain->SetBranchStatus("PFMET", 1);
   
   float dbkg_kin;
@@ -124,6 +125,7 @@ int main ( int argc, char *argv[] )
   vector<Float_t> *JetIsBtaggedWithSF = 0;
   vector<Float_t> *JetIsBtagged = 0;
   vector<Float_t> *JetBTagger = 0;
+  vector<Float_t> *JetHadronFlavour = 0;
   Float_t PFMET;
   
   TFile *f = new TFile("ZX.root","recreate");
@@ -159,6 +161,7 @@ int main ( int argc, char *argv[] )
   tnew->Branch("JetIsBtaggedWithSF",&JetIsBtaggedWithSF);
   tnew->Branch("JetIsBtagged",&JetIsBtagged);
   tnew->Branch("JetBTagger",&JetBTagger);
+  tnew->Branch("JetHadronFlavour",&JetHadronFlavour);
   tnew->Branch("PFMET",&PFMET);
 
   
@@ -202,6 +205,7 @@ int main ( int argc, char *argv[] )
       JetIsBtaggedWithSF->clear();
       JetIsBtagged->clear();
       JetBTagger->clear();
+      JetHadronFlavour->clear();
       
       if (data.LepEta->size() > 0 && data.LepEta->size() < 1000000)
 	{
@@ -222,6 +226,7 @@ int main ( int argc, char *argv[] )
 	      JetIsBtaggedWithSF->push_back(data.JetIsBtaggedWithSF->at(i));
 	      JetIsBtagged->push_back(data.JetIsBtagged->at(i));
               JetBTagger->push_back(data.JetBTagger->at(i));
+              JetHadronFlavour->push_back(data.JetHadronFlavour->at(i));
 	    }
 	}
       //      std::cout << data.ZZMass << endl;
