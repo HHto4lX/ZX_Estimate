@@ -34,8 +34,8 @@ using namespace std;
 
 //***************************
 //TString year = "2016";
-//TString year = "2017";
-TString year = "2018";
+TString year = "2017";
+//TString year = "2018";
 
 string method = "SS";
 //string method = "OS";
@@ -44,7 +44,9 @@ string method = "SS";
 
 void plotFR(){
 
-  TString inFile_name = "../data/FR_fromHZZmuCutBased/FakeRates_" + method + "_" + year + ".root";
+  //  TString inFile_name = "../data/FR_fromHZZmuCutBased/FakeRates_" + method + "_" + year + ".root";
+  TString inFile_name = "../data/FR_HH4lX_4lsel/FakeRates_" + method + "_samples" + year + ".root";
+  //  TString inFile_name = "../data/FR_HH4lX_4ljjsel/FakeRates_" + method + "_samples" + year + ".root";
   cout<<"opening file"<<inFile_name<<" ..."<<endl;
   TFile* inFile = TFile::Open(inFile_name);
 
