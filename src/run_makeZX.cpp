@@ -31,11 +31,11 @@ int main ( int argc, char *argv[] )
   // _fs_ROS_SS.push_back(1.01328);//2e2mu 
   // _fs_ROS_SS.push_back(1.00257);//2mu2e 
 
-  // 2018 OS/SS ratio, corresponds to FR_fromHZZmuCutBased/FakeRates_SS_2018.root
-  _fs_ROS_SS.push_back(1.02926);//4mu 
-  _fs_ROS_SS.push_back(1.00568);//4e 
-  _fs_ROS_SS.push_back(1.03226);//2e2mu 
-  _fs_ROS_SS.push_back(1.00432);//2mu2e 
+  // 2018 OS/SS ratio, corresponds to FR_HH4lX_4lsel_20200420/FakeRates_SS_samples2018_4lsel.root
+  _fs_ROS_SS.push_back(1.02582);//4mu 
+  _fs_ROS_SS.push_back(1.00273);//4e 
+  _fs_ROS_SS.push_back(1.02736);//2e2mu 
+  _fs_ROS_SS.push_back(1.00445);//2mu2e 
 
   
   // 2016 FR with cut based muon ID
@@ -45,7 +45,7 @@ int main ( int argc, char *argv[] )
   //  FakeRates *FR = new FakeRates( "data/FR_HH4lX_4ljjsel/FakeRates_SS_samples2017.root");
 
   // 2018 FR with cut based muon ID
-  FakeRates *FR = new FakeRates( "data/FR_HH4lX_4ljjsel/FakeRates_SS_samples2018.root");
+  FakeRates *FR = new FakeRates( "data/FR_HH4lX_4lsel_20200420/FakeRates_SS_samples2018_4lsel.root");
 
 
   TChain *t = new TChain("CRZLLTree/candTree");
