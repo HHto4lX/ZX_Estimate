@@ -20,11 +20,17 @@ int main ( int argc, char *argv[] )
   
   vector<float> _fs_ROS_SS;
   // --- 2016 ---
-  // 2016 OS/SS ratio, corresponds to FR_HH4lX_4lsel/FakeRates_SS_samples2016_4lsel.root
-  _fs_ROS_SS.push_back(0.998103);//4mu 
-  _fs_ROS_SS.push_back(1.00033);//4e 
-  _fs_ROS_SS.push_back(1.03491);//2e2mu 
-  _fs_ROS_SS.push_back(0.998758);//2mu2e 
+  // // 2016 OS/SS ratio, corresponds to FR_HH4lX_4lsel/FakeRates_SS_samples2016_4lsel.root
+  // _fs_ROS_SS.push_back(0.998103);//4mu 
+  // _fs_ROS_SS.push_back(1.00033);//4e 
+  // _fs_ROS_SS.push_back(1.03491);//2e2mu 
+  // _fs_ROS_SS.push_back(0.998758);//2mu2e 
+
+  // 2016 OS/SS ratio, corresponds to FR_HH4lX_4ljjsel/FakeRates_SS_samples2016_4ljjsel.root
+  _fs_ROS_SS.push_back(0.974783);//4mu 
+  _fs_ROS_SS.push_back(0.969386);//4e 
+  _fs_ROS_SS.push_back(0.973706);//2e2mu 
+  _fs_ROS_SS.push_back(1.0012);//2mu2e 
 
   // --- 2017 ---
   // // 2017 OS/SS ratio, corresponds to FR_HH4lX_4lsel/FakeRates_SS_samples2017_4lsel.root
@@ -54,7 +60,8 @@ int main ( int argc, char *argv[] )
 
   
   // 2016 FR with cut based muon ID
-  FakeRates *FR = new FakeRates( "data/FR_HH4lX_4lsel_20200420/FakeRates_SS_samples2016_4lsel.root");
+  //  FakeRates *FR = new FakeRates( "data/FR_HH4lX_4lsel_20200420/FakeRates_SS_samples2016_4lsel.root");
+  FakeRates *FR = new FakeRates( "data/FR_HH4lX_4ljjsel_20200420/FakeRates_SS_samples2016_4ljjsel.root");
 
   // 2017 FR with cut based muon ID
   //  FakeRates *FR = new FakeRates( "data/FR_HH4lX_4lsel_20200420/FakeRates_SS_samples2017_4lsel.root");
